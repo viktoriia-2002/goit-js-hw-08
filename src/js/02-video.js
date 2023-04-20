@@ -12,4 +12,6 @@ player.on(
   }, 1000)
 );
 
+
 player.setCurrentTime(30.456).then(function (seconds) {});
+
