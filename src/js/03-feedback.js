@@ -13,7 +13,7 @@ const formInput = {};
 function onSubmit(event) {
   event.preventDefault();
   console.log(formInput);
-  event.currentTarget.reset(); //reset
+  event.currentTarget.reset(); 
   localStorage.removeItem(STORAGE_KEY);
 }
 
