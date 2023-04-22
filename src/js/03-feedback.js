@@ -13,8 +13,16 @@ const formInput = {};
 function onSubmit(event) {
   event.preventDefault();
   console.log(formInput);
-  event.currentTarget.reset(); 
+  event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+
+  const {
+    elements: { email, message },
+  } = event.currentTarget;
+
+  if (email.value.trim() === '' || message.value.trim() === '') {
+    alert('Please fill in all the fields!');
+  }
 }
 
 function onInput(event) {
@@ -26,6 +34,10 @@ function onInput(event) {
   } else {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formInput));
   }
+}
+
+if (localStorage.getItem(STORAGE_KEY)) {
+  saveInput();
 }
 
 function saveInput() {
