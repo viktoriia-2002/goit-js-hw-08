@@ -30,7 +30,7 @@ function onInput(event) {
   formInput[event.target.name] = event.target.value;
 
   if (event.target.value === '' || localStorage.getItem(STORAGE_KEY) === '') {
-    localStoravge.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
   } else {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formInput));
   }
@@ -50,3 +50,17 @@ function saveInput() {
   }
 }
 saveInput();
+
+function checkLocalStorage() {
+  if (localStorage.getItem(STORAGE_KEY)) {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (data) {
+      const email = data.email;
+      const message = data.message;
+      document.querySelector('input[name="email"]').value = email;
+      document.querySelector('textarea[name="message"]').value = message;
+    }
+  }
+}
+
+checkLocalStorage();
